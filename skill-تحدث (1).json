@@ -1,0 +1,334 @@
+{
+  "intents": [
+    {
+      "intent": "الدعم",
+      "examples": [
+        {
+          "text": "أواجه مشكلة"
+        },
+        {
+          "text": "احتاج مساعدة"
+        },
+        {
+          "text": "لدي مشكلة"
+        },
+        {
+          "text": "مساعدة"
+        },
+        {
+          "text": "مشكلة"
+        },
+        {
+          "text": "هناك مشكلة"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "ترحيب",
+      "examples": [
+        {
+          "text": "hello"
+        },
+        {
+          "text": "hi"
+        },
+        {
+          "text": "السلام عليكم"
+        },
+        {
+          "text": "السلام عليكم ورحمة الله وبركاته"
+        },
+        {
+          "text": "اهلا"
+        },
+        {
+          "text": "مرحبا"
+        },
+        {
+          "text": "هاي"
+        },
+        {
+          "text": "هلا"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "تشغيل_الروبوت_او_استخدامه",
+      "examples": [
+        {
+          "text": "تشغيل الروبوت"
+        },
+        {
+          "text": "مشكلة في استخدامه"
+        },
+        {
+          "text": "مشكلة في تشغيل الروبوت او استخدامه"
+        },
+        {
+          "text": "مشكلة في تشغيله"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "توقف_الروبوت_او_تعطله",
+      "examples": [
+        {
+          "text": "تعطله"
+        },
+        {
+          "text": "توقف الروبوت"
+        },
+        {
+          "text": "توقف الروبوت عن العمل او تعطله"
+        },
+        {
+          "text": "توقفه"
+        },
+        {
+          "text": "توقفه عن العمل"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "لوحة_التحكم",
+      "examples": [
+        {
+          "text": "اواجه مشكلة في فهم لوحة التحكم"
+        },
+        {
+          "text": "لوحة التحكم"
+        },
+        {
+          "text": "مشكلة في لوحة التحكم"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "نهاية",
+      "examples": [
+        {
+          "text": "حسنا"
+        },
+        {
+          "text": "شكرا"
+        },
+        {
+          "text": "شكرا لك"
+        },
+        {
+          "text": "لقد فهمت"
+        }
+      ],
+      "description": ""
+    }
+  ],
+  "entities": [],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    }
+  },
+  "webhooks": [
+    {
+      "url": "",
+      "name": "main_webhook",
+      "headers": []
+    }
+  ],
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "حسنا، لديك هناك في يسار او اعلى الصفحة  ازرار يمكنك من خلالها  التحكم في مقدار حركة الذراع  الروبوتية من خلال تحديد مقدار حركة كل زاوية \nفي الجهة المقابلة يمكنك التحكم بأتجاه حركة الروبوت (يمين ، يسار ، امام، خلف) او فقط ايقافه .\n\n"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#لوحة_التحكم",
+      "dialog_node": "node_1_1625286511466",
+      "previous_sibling": "node_1_1625286771672"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "للأستفسار عن طريقة عمل الروبوت وكيفية استخدامه يمكنك  الاتصال على هذا الرقم وسيقوم فريقنا في الدعم بتوضيح كل ما تريده  لك : 97765 7980   "
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#تشغيل_الروبوت_او_استخدامه",
+      "dialog_node": "node_1_1625286771672",
+      "previous_sibling": "node_4_1625286632256"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": " عذرا لم أفهمك، حاول مرة أخرى "
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "dialog_node": "node_2_1625284438230",
+      "previous_sibling": "node_3_1625286853407"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": " انا سعيد بمساعدتك طاب يومك"
+              },
+              {
+                "text": "طاب يومك"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#نهاية",
+      "dialog_node": "node_3_1625286853407",
+      "previous_sibling": "node_1_1625286511466"
+    },
+    {
+      "type": "frame",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": " اهلا بك، كيف يمكنني مساعدتك ؟"
+              },
+              {
+                "text": "تفضل، كيف يمكنني مساعدتك؟"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#ترحيب",
+      "dialog_node": "node_4_1625192088772",
+      "previous_sibling": "مرحبا",
+      "disambiguation_opt_out": true
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "يمكنك الأتصال بخدمة العملاء لحل مشكلتك او استبدال الجهاز على هذا الرقم : 9776679870  "
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#توقف_الروبوت_او_تعطله",
+      "dialog_node": "node_4_1625286632256",
+      "previous_sibling": "node_9_1625285686316"
+    },
+    {
+      "type": "frame",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "\nما نوع المشكلة التي تواجهك؟\n\nتوقف الروبوت عن العمل او تعطله  -\n\nمشكلة في تشغيل الروبوت او استخدامه - \n\nمشكلة في فهم لوحة التحكم الخاصة بالروبوت -\n"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#الدعم",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_9_1625285686316",
+      "previous_sibling": "node_4_1625192088772"
+    },
+    {
+      "type": "standard",
+      "title": "مرحبا",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "مرحبا، كيف يمكنني مساعدتك؟"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "welcome",
+      "dialog_node": "مرحبا"
+    }
+  ],
+  "counterexamples": [
+    {
+      "text": "حسنا، لديك هناك في يسار او اعلى الصفحة  ازرار يمكنك من خلالها  التحكم في مقدار حركة الذراع  الروبوتية من خلال تحديد مقدار حركة كل زاوية للـ  (Motor)     في الجهة المقابلة يمكنك التحكم بأتجاه حركة الروبوت (يمين ، يسار ، امام، خلف) او    فقط ايقافه ."
+    },
+    {
+      "text": "مشكلة"
+    },
+    {
+      "text": "يمكنك الأتصال بخدمة العملاء لحل مشكلتك او استبدال الجهاز على هذا الرقم : 9776679870  ملاحظة : وقت استقبال المكالمات من الساعة الثامنة صباحا وحتى الواحدة ظهرا "
+    }
+  ],
+  "system_settings": {
+    "disambiguation": {
+      "prompt": ":هل قصدت",
+      "enabled": true,
+      "randomize": true,
+      "max_suggestions": 5,
+      "suggestion_text_policy": "title",
+      "none_of_the_above_prompt": "كل ما سبق خطأ"
+    },
+    "human_agent_assist": {
+      "prompt": ":هل قصدت"
+    }
+  },
+  "learning_opt_out": false,
+  "name": "تحدث",
+  "language": "ar",
+  "description": ""
+}
